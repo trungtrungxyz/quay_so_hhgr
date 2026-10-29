@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quay Số cùng Hoàng Huy Green River</title>
+    <link rel="icon" href="logo.png" type="image/png">
     <style>
-        /* ===== BẢNG MÀU ===== */
         :root {
             --primary-dark: #193D49;
             --primary: #2E5E5B;
@@ -35,29 +35,61 @@
         header {
             width: 100%;
             background: var(--primary-dark);
-            padding: 20px 0;
+            padding: 25px 20px;
             text-align: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             border-bottom: 4px solid var(--accent);
         }
 
-        header h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: var(--accent-light);
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        header h1 span {
+        .logo-wrapper {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 12px 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--accent);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .logo-wrapper:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo {
+            display: block;
+            max-width: 320px;
+            width: 100%;
+            height: auto;
+        }
+
+        .header-subtitle {
+            font-size: 1rem;
             color: var(--accent);
-            font-weight: 300;
-        }
-
-        header p {
+            opacity: 0.85;
+            letter-spacing: 3px;
+            text-transform: uppercase;
             margin-top: 5px;
-            font-size: 0.95rem;
+        }
+
+        .header-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            letter-spacing: 1px;
+        }
+
+        .header-title span {
             color: var(--accent);
-            opacity: 0.8;
+            font-weight: 400;
         }
 
         /* ===== MAIN CONTENT ===== */
@@ -73,7 +105,6 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
-        /* ===== SETTINGS ===== */
         .settings {
             display: flex;
             gap: 15px;
@@ -114,11 +145,6 @@
             border-color: var(--accent-light);
         }
 
-        .setting-group input::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        /* ===== DISPLAY ===== */
         .display-area {
             text-align: center;
             margin: 30px 0;
@@ -133,7 +159,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.1s;
             user-select: none;
         }
 
@@ -154,7 +179,6 @@
             letter-spacing: 2px;
         }
 
-        /* ===== BUTTONS ===== */
         .buttons {
             display: flex;
             gap: 15px;
@@ -186,10 +210,6 @@
             box-shadow: 0 10px 30px rgba(164, 133, 116, 0.6);
         }
 
-        .btn-primary:active {
-            transform: translateY(0);
-        }
-
         .btn-primary:disabled {
             opacity: 0.5;
             cursor: not-allowed;
@@ -207,7 +227,6 @@
             color: var(--primary-dark);
         }
 
-        /* ===== HISTORY ===== */
         .history-section {
             margin-top: 35px;
             border-top: 1px solid rgba(192, 175, 164, 0.2);
@@ -233,15 +252,6 @@
             padding: 10px;
         }
 
-        .history-list::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .history-list::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 3px;
-        }
-
         .history-item {
             background: rgba(192, 175, 164, 0.15);
             border: 1px solid var(--accent);
@@ -253,17 +263,17 @@
             animation: fadeIn 0.3s ease;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
         .history-item .order {
             font-size: 0.7rem;
             color: var(--accent);
             display: block;
             text-align: center;
             font-weight: 400;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .no-history {
@@ -273,7 +283,6 @@
             font-style: italic;
         }
 
-        /* ===== FOOTER ===== */
         footer {
             margin-top: auto;
             padding: 20px;
@@ -283,10 +292,13 @@
             opacity: 0.7;
         }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 500px) {
-            header h1 {
-                font-size: 1.4rem;
+        @media (max-width: 600px) {
+            .logo {
+                max-width: 240px;
+            }
+
+            .header-title {
+                font-size: 1.2rem;
             }
 
             .number-display {
@@ -307,12 +319,20 @@
 <body>
 
     <header>
-        <h1>🎰 Quay Số cùng <span>Hoàng Huy Green River</span></h1>
-        <p>Random Number Generator</p>
+        <div class="header-content">
+            <!-- LOGO -->
+            <div class="logo-wrapper">
+                <img src="logo.png" alt="Hoang Huy Green River" class="logo">
+            </div>
+            <!-- TITLE -->
+            <div>
+                <h1 class="header-title"> Quay Số cùng <span>Hoàng Huy Green River</span></h1>
+                <p class="header-subtitle">Random Number Generator</p>
+            </div>
+        </div>
     </header>
 
     <div class="container">
-        <!-- Settings -->
         <div class="settings">
             <div class="setting-group">
                 <label>Từ số</label>
@@ -328,23 +348,16 @@
             </div>
         </div>
 
-        <!-- Display -->
         <div class="display-area">
             <div class="number-display" id="numberDisplay">?</div>
             <div class="result-label" id="resultLabel">Nhấn nút để quay số</div>
         </div>
 
-        <!-- Buttons -->
         <div class="buttons">
-            <button class="btn btn-primary" id="spinBtn" onclick="startSpin()">
-                 Quay Số
-            </button>
-            <button class="btn btn-secondary" onclick="resetAll()">
-                🔄 Đặt lại
-            </button>
+            <button class="btn btn-primary" id="spinBtn" onclick="startSpin()">🎲 Quay Số</button>
+            <button class="btn btn-secondary" onclick="resetAll()">🔄 Đặt lại</button>
         </div>
 
-        <!-- History -->
         <div class="history-section">
             <h3>📋 Lịch sử quay số</h3>
             <div class="history-list" id="historyList">
@@ -377,12 +390,10 @@
                 alert('Vui lòng nhập đầy đủ thông tin!');
                 return;
             }
-
             if (min >= max) {
                 alert('Số bắt đầu phải nhỏ hơn số kết thúc!');
                 return;
             }
-
             if (count < 1 || count > 50) {
                 alert('Số lượng phải từ 1 đến 50!');
                 return;
@@ -397,14 +408,12 @@
             display.classList.add('spinning');
             label.textContent = 'Đang quay...';
 
-            // Animation spinning effect
             let spinCount = 0;
             const totalSpins = 20;
 
             spinInterval = setInterval(() => {
                 display.textContent = getRandomInt(min, max);
                 spinCount++;
-
                 if (spinCount >= totalSpins) {
                     clearInterval(spinInterval);
                     finishSpin(min, max, count);
@@ -417,13 +426,11 @@
             const label = document.getElementById('resultLabel');
             const btn = document.getElementById('spinBtn');
 
-            // Generate final results
             const results = [];
             for (let i = 0; i < count; i++) {
                 results.push(getRandomInt(min, max));
             }
 
-            // Show result
             if (count === 1) {
                 display.textContent = results[0];
             } else {
@@ -434,34 +441,23 @@
             display.classList.remove('spinning');
             label.textContent = `Kết quả: ${count} số từ ${min} đến ${max}`;
 
-            // Add to history
-            results.forEach((num, index) => {
-                history.unshift({
-                    number: num,
-                    time: new Date().toLocaleTimeString('vi-VN'),
-                    order: history.length + 1
-                });
+            results.forEach((num) => {
+                history.unshift({ number: num });
             });
 
             updateHistory();
-
             btn.disabled = false;
             isSpinning = false;
 
-            // Reset font size after a delay
-            setTimeout(() => {
-                display.style.fontSize = '';
-            }, 3000);
+            setTimeout(() => { display.style.fontSize = ''; }, 3000);
         }
 
         function updateHistory() {
             const historyList = document.getElementById('historyList');
-
             if (history.length === 0) {
                 historyList.innerHTML = '<p class="no-history">Chưa có kết quả</p>';
                 return;
             }
-
             historyList.innerHTML = history.map((item, index) => `
                 <div class="history-item">
                     <span class="order">#${history.length - index}</span>
@@ -472,7 +468,6 @@
 
         function resetAll() {
             if (isSpinning) return;
-
             history = [];
             document.getElementById('numberDisplay').textContent = '?';
             document.getElementById('resultLabel').textContent = 'Nhấn nút để quay số';
@@ -482,11 +477,8 @@
             updateHistory();
         }
 
-        // Allow Enter key to spin
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && !isSpinning) {
-                startSpin();
-            }
+            if (e.key === 'Enter' && !isSpinning) startSpin();
         });
     </script>
 
